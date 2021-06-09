@@ -19,24 +19,6 @@ if(enviarMensaje) {
   enviarMensaje.addEventListener('click', sendMessage)
 }
 
-// if(btnRegistrarse) {
-//   btnRegistrarse.addEventListener('click', (event) => {
-//     event.preventDefault()
-//     console.log('registrarse')
-//     fetch('http://localhost:3232/api/register', {
-//       method: 'POST',
-//       body: JSON.stringify({ usuario: usuario.value, password: password.value, email: email.value}),
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     }).then( result => result.json())
-//       .then( () => window.location.replace('http://localhost:3232/datos'))
-//       .catch( err => console.log(err))
-      
-//   })
-
-// }
-
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems);
@@ -46,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function salir ()  {
   console.log('salir')
-  fetch('http://localhost:3232/sesion/salir', {
+  fetch('http://localhost:3232/api/sesion/salir', {
     method: 'GET',
   }).then( result => result.json())
     .then( () => window.location.replace('http://localhost:3232/'))
@@ -132,15 +114,6 @@ socket.on('connect', () => {
     console.log('desconectado')
   })
   
-  // socket.on('productos', (data) => {
-  //   tbody.innerHTML = ''
-  //   let productos = JSON.parse(data)
-  //   productos.forEach( producto => crearRegistroTabla(producto))
-  // })
-
-  // socket.on('productoAgregado', (data) => {
-  //   crearRegistroTabla(JSON.parse(data))
-  // })
 
   socket.on('message', (data) => {
     console.log(data)

@@ -1,25 +1,9 @@
-const { io } = require('../index')
-const ProductoServicio = require('./../services/producto.service')
+const { io } = require('../services/index')
 const MensajeServicio = require('./../services/mensaje.service')
+const MensajesServicio = require('./../services/mensajes.service')
 
-const twilioAccountId = process.env.TWILIO_ACCOUNT_ID
-const twilioAuthToken= process.env.TWILIO_AUTH_TOKEN
-
-const clientTwilio = require('twilio')(twilioAccountId, twilioAuthToken)
-
-
-// let productoServicio = new ProductoServicio()
 let mensajeServicio = new MensajeServicio()
-
-function sendSMS (mensaje) {
-  clientTwilio.messages.create({
-    body: mensaje,
-    from: '+13236760277',
-    to: '+5491140430759'
-  })
-  .then( message => console.log({message}))
-  .catch ( err => console.log({err}))
-}
+let mensajesServicio = new MensajesServicio()
 
 io.on('connection', (client) => {
   console.log('cliente conectado')
@@ -32,7 +16,7 @@ io.on('connection', (client) => {
 
     if(data.text.includes('administrador')) {
       let mensaje = `${data.author.email} ${data.text}`
-      sendSMS(mensaje)
+      mensajesServicio.sendSMS(mensaje)
     }
 
     let mensajeAgregado = await mensajeServicio.add(data)

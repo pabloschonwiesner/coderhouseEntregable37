@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="/ingresar" method="post">
+  <form action="/api/ingresar" method="post">
     <div class="nav-wrapper teal white-text">
       <p>Login</p>
     </div>
@@ -31,9 +31,9 @@
       </div>
     {{/if}}
     <button type="submit" class="waves-effect waves-light btn-large">Ingresar</button>
-    <button formaction="/register" formmethod="GET" class="waves-effect waves-light btn-large teal lighten-5 teal-text">Registrarse</button>
+    <button formaction="/api/register" formmethod="GET" class="waves-effect waves-light btn-large teal lighten-5 teal-text">Registrarse</button>
     <div class="row">
-      <button formaction="/auth/facebook" formmethod="GET" class="waves-effect waves-light btn-large blue darken-4 btn-facebook">Ingresar con Facebook</button>
+      <button formaction="/api/auth/facebook" formmethod="GET" class="waves-effect waves-light btn-large blue darken-4 btn-facebook">Ingresar con Facebook</button>
     </div>
   </form>
 
